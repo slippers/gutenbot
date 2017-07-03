@@ -66,7 +66,11 @@ def post_corpora(url, auth_token):
                        headers=authentication_token,
                        files=files,
                        data=data)
-    print(ru.json())
+
+    if ru.ok:
+        print(ru.json())
+    else:
+        print(ru.status_code, ru.reason)
 
 
 if __name__ == "__main__":
