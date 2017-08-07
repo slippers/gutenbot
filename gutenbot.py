@@ -62,11 +62,12 @@ def post_corpora(url, auth_token):
     }
 
     # post
-    ru = requests.post(url + '/v1/corpora',
+    ru = requests.post(url,
                        headers=authentication_token,
                        files=files,
                        data=data)
 
+    print(ru.url, ru.status_code)
     if ru.ok:
         print(ru.json())
     else:
