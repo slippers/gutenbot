@@ -79,6 +79,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='post corpora to flask-prose')
     parser.add_argument('url')
     parser.add_argument('auth_token')
+    parser.add_argument('posts', type=int, default=1, nargs='?')
     args = parser.parse_args()
 
     sqlite_cache = './gutenbot.sqlite'
@@ -88,7 +89,8 @@ if __name__ == "__main__":
         cache.populate()
     set_metadata_cache(cache)
 
-    post_corpora(args.url, args.auth_token)
+    for i in range(args.posts):
+        post_corpora(args.url, args.auth_token)
 
 '''
     # print(list_supported_metadatas())
